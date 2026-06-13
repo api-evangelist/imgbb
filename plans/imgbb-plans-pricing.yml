@@ -1,0 +1,121 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: ImgBB
+providerId: imgbb
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+type: freemium
+
+plans:
+
+  - name: Free
+    description: >
+      Free image hosting for individuals and basic use. Upload images up to 32 MB each
+      with no account required for manual uploads. API access requires a free account
+      and API key. Includes direct links, BBCode and HTML thumbnail codes, viewer pages,
+      and optional auto-deletion from 5 minutes to 6 months. Ads are displayed on
+      viewer pages.
+    type: free
+    cost: 0
+    currency: USD
+    billingPeriod: monthly
+    quotas:
+      - metric: upload_file_size
+        limit: 32
+        unit: MB
+        type: boolean
+      - metric: expiration_min
+        limit: 60
+        unit: seconds
+        type: boolean
+      - metric: expiration_max
+        limit: 15552000
+        unit: seconds
+        type: boolean
+    features:
+      - Image upload via web UI (no account required)
+      - API upload with free account and API key
+      - Direct image links
+      - BBCode and HTML embed codes
+      - Thumbnail URLs
+      - Delete URL per image
+      - Auto-deletion (60 seconds to 180 days)
+      - Viewer page per image
+
+  - name: Pro Monthly
+    description: >
+      ImgBB Pro subscription billed monthly. Removes ads, increases upload file size
+      limit to 64 MB, adds image replacement functionality, enables direct linking
+      without referrer restrictions, and provides API access with full features.
+      Unlimited storage included.
+    type: paid
+    cost: 12.99
+    currency: USD
+    billingPeriod: monthly
+    quotas:
+      - metric: upload_file_size
+        limit: 64
+        unit: MB
+        type: boolean
+      - metric: storage
+        limit: unlimited
+        type: boolean
+    features:
+      - All Free features
+      - No advertisements on viewer pages
+      - 64 MB file size limit (vs 32 MB free)
+      - Unlimited storage
+      - Image replacement
+      - Direct linking without referrer restrictions
+      - Full API access
+
+  - name: Pro Annual
+    description: >
+      ImgBB Pro subscription billed annually at $7.99/month ($95.88/year), saving 38%
+      versus the monthly plan. Identical features to Pro Monthly.
+    type: paid
+    cost: 7.99
+    currency: USD
+    billingPeriod: monthly
+    billingCycle: annual
+    annualTotal: 95.88
+    quotas:
+      - metric: upload_file_size
+        limit: 64
+        unit: MB
+        type: boolean
+      - metric: storage
+        limit: unlimited
+        type: boolean
+    features:
+      - All Pro Monthly features
+      - 38% discount versus monthly billing
+
+  - name: Pro 3-Year
+    description: >
+      ImgBB Pro subscription billed every three years at $3.99/month ($143.64 total),
+      saving 69% versus the monthly plan. Identical features to Pro Monthly.
+    type: paid
+    cost: 3.99
+    currency: USD
+    billingPeriod: monthly
+    billingCycle: triennial
+    triennialTotal: 143.64
+    quotas:
+      - metric: upload_file_size
+        limit: 64
+        unit: MB
+        type: boolean
+      - metric: storage
+        limit: unlimited
+        type: boolean
+    features:
+      - All Pro Monthly features
+      - 69% discount versus monthly billing
+
+notes: >
+  Pricing sourced from https://imgbb.com on 2026-06-13. Rate limits for API requests
+  are not publicly documented. The free tier allows API usage with a key obtained from
+  https://api.imgbb.com after creating a free account. Pro plans are primarily
+  differentiated by file size, ad removal, and image replacement capability.

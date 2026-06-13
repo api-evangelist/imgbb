@@ -1,0 +1,91 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: ImgBB
+providerId: imgbb
+created: '2026-06-13'
+modified: '2026-06-13'
+
+billingModel: freemium-tiered-subscription
+description: >
+  ImgBB uses a flat-rate subscription billing model. The free tier covers individual
+  and small-project usage with a 32 MB upload cap and ads. Pro plans are time-based
+  subscriptions (monthly, annual, or 3-year) that remove ads, raise the file size cap
+  to 64 MB, add image replacement, and provide full API access. There is no per-upload
+  metered charge or overage billing; the primary cost driver is the Pro subscription
+  tier and billing period selected.
+
+focusColumns:
+  - ChargeCategory: Subscription
+  - BillingCurrency: USD
+  - BillingPeriod: Monthly / Annual / Triennial
+  - ServiceName: ImgBB Image Hosting
+  - SkuName: ImgBB Pro Subscription
+  - ConsumedUnit: subscription
+  - ConsumedQuantity: 1
+
+meters:
+
+  - name: pro_subscription
+    description: >
+      Flat-rate subscription granting ad-free hosting, 64 MB uploads, unlimited
+      storage, image replacement, and full API access. No per-upload metering.
+    unit: subscription
+    billingModel: flat-rate
+    tiers:
+      - tier: Free
+        included: unlimited_uploads
+        cost: 0
+        currency: USD
+        fileSizeLimit_MB: 32
+        ads: true
+      - tier: Pro Monthly
+        cost: 12.99
+        currency: USD
+        billingCycle: monthly
+        fileSizeLimit_MB: 64
+        ads: false
+      - tier: Pro Annual
+        cost: 95.88
+        currency: USD
+        billingCycle: annual
+        effectiveMonthly: 7.99
+        fileSizeLimit_MB: 64
+        ads: false
+      - tier: Pro 3-Year
+        cost: 143.64
+        currency: USD
+        billingCycle: triennial
+        effectiveMonthly: 3.99
+        fileSizeLimit_MB: 64
+        ads: false
+
+principles:
+
+  - name: Visibility
+    description: >
+      ImgBB does not expose a billing dashboard or usage metrics API. Subscription
+      status is managed through the account settings page at imgbb.com. There is no
+      per-upload cost tracking since the model is flat-rate.
+    controls:
+      - type: AccountSettings
+        url: https://imgbb.com/
+
+  - name: Optimization
+    recommendations:
+      - description: >
+          Use the free tier for development, testing, and low-volume image sharing.
+          The 32 MB limit covers most web and social image use cases.
+      - description: >
+          Commit to the 3-year Pro plan ($3.99/month effective) for the lowest unit
+          cost if long-term, high-volume usage is anticipated.
+      - description: >
+          Use the expiration parameter to auto-delete temporary images (e.g., CI/CD
+          artifacts, preview images) and avoid accumulating unnecessary storage.
+      - description: >
+          Store the delete_url returned by each upload to enable programmatic cleanup
+          of images no longer needed, particularly for automated pipelines.
+      - description: >
+          Evaluate whether the Pro plan's image replacement feature can reduce storage
+          waste from repeated uploads of updated assets.
+
+source: https://imgbb.com/

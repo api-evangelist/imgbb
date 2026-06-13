@@ -1,0 +1,64 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: ImgBB
+providerId: imgbb
+created: '2026-06-13'
+modified: '2026-06-13'
+
+throttledStatusCode: 200
+throttledMessage: "API responses return status 400 on bad requests; rate limit specifics are not publicly documented."
+
+limits:
+
+  - scope: account
+    api: Image Upload API v1
+    metric: requests
+    methods:
+      - POST
+      - GET
+    limit: undocumented
+    timeFrame: undocumented
+    notes: >
+      ImgBB does not publicly document specific rate limits for the v1 upload API.
+      Practical usage suggests limits are enforced server-side to prevent abuse.
+      For high-volume integrations, implement exponential backoff on errors and
+      avoid parallel burst uploading. The API returns HTTP 400 for invalid requests
+      and 429 for rate limiting when enforced.
+
+constraints:
+
+  - metric: upload_file_size_free
+    limit: 32
+    unit: MB
+    notes: >
+      Maximum file size per upload on the free plan. Applies to binary files,
+      base64-encoded data, and source image URLs.
+
+  - metric: upload_file_size_pro
+    limit: 64
+    unit: MB
+    notes: >
+      Maximum file size per upload on any ImgBB Pro plan.
+
+  - metric: expiration_minimum
+    limit: 60
+    unit: seconds
+    notes: >
+      Minimum expiration/auto-deletion time. Images with expiration set below
+      60 seconds will be rejected.
+
+  - metric: expiration_maximum
+    limit: 15552000
+    unit: seconds
+    notes: >
+      Maximum expiration/auto-deletion time (180 days). Images without an expiration
+      set persist indefinitely.
+
+bestPractices:
+  - Prefer POST over GET for uploads to avoid URL length limitations with base64 data.
+  - Use multipart/form-data for binary file uploads; the API auto-detects the filename.
+  - Implement exponential backoff on HTTP 4xx/5xx responses.
+  - Store the delete_url returned in each upload response to allow later removal.
+  - Keep API keys server-side; never expose them in client-side code.
+
+source: https://api.imgbb.com/

@@ -1,32 +1,67 @@
 aid: imgbb
-name: Imgbb
-description: "Simple and quick private image sharing"
-url: https://api.imgbb.com/
-specificationVersion: '0.20'
-created: '2026-05-28'
-modified: '2026-05-28'
-x-source: public-apis/public-apis
-x-category: "Cloud Storage & File Sharing"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+name: ImgBB
+description: >
+  ImgBB is a free image hosting and sharing platform with a REST API for uploading images,
+  retrieving shareable links, managing expiration, and accessing image metadata. Supports
+  binary file upload, base64-encoded data, and image URLs up to 32 MB. The API returns
+  direct image links, viewer page URLs, thumbnail URLs, and delete URLs in JSON. No
+  registration is required to use the basic hosting service, but an API key is required
+  for programmatic uploads via the v1 REST API.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/imgbb/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
 tags:
-  - Cloud Storage And File Sharing
-  - Public APIs
+  - Image Hosting
+  - Image Upload
+  - File Sharing
+  - Cloud Storage
+  - Media
+  - REST API
+
 apis:
-  - name: Imgbb
-    description: "Simple and quick private image sharing"
+
+  - aid: imgbb:image-upload-api
+    name: ImgBB Image Upload API
+    description: >
+      REST API (v1) for uploading images to ImgBB. Accepts binary files, base64-encoded
+      image data, or image URLs via POST or GET to https://api.imgbb.com/1/upload.
+      Returns JSON with direct image URL, viewer URL, thumbnail URL, delete URL, image
+      dimensions, file size, MIME type, and optional expiration timestamp. Authentication
+      is via an API key passed as the key query parameter or form field.
     humanURL: https://api.imgbb.com/
-    baseURL: https://api.imgbb.com/
+    baseURL: https://api.imgbb.com/1
     tags:
-      - Cloud Storage And File Sharing
+      - Image Upload
+      - Image Hosting
+      - File Sharing
+      - Media
     properties:
       - type: Documentation
         url: https://api.imgbb.com/
+      - type: Authentication
+        url: https://api.imgbb.com/
+
 common:
   - type: Website
+    url: https://imgbb.com/
+  - type: Documentation
     url: https://api.imgbb.com/
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
+  - type: Pricing
+    url: https://imgbb.com/
+  - type: TermsOfService
+    url: https://imgbb.com/page/tos
+  - type: PrivacyPolicy
+    url: https://imgbb.com/page/privacy_policy
+  - type: Plans
+    url: plans/imgbb-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/imgbb-rate-limits.yml
+  - type: FinOps
+    url: finops/imgbb-finops.yml
+
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
