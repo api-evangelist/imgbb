@@ -1,0 +1,77 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "imgbb": "https://api.imgbb.com/vocab#",
+    "openapi": "https://openapis.org/ns#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://api.imgbb.com/",
+  "name": "ImgBB Image Upload API",
+  "description": "REST API for uploading images to ImgBB. Supports binary file upload, base64-encoded data, and image URLs up to 32 MB. Returns direct image links, viewer page URLs, thumbnail URLs, and delete URLs in JSON.",
+  "url": "https://api.imgbb.com/",
+  "version": "1",
+  "termsOfService": "https://imgbb.com/page/tos",
+  "provider": {
+    "@type": "Organization",
+    "name": "ImgBB",
+    "url": "https://imgbb.com/",
+    "sameAs": [
+      "https://ibb.co/"
+    ]
+  },
+  "documentation": {
+    "@type": "TechArticle",
+    "name": "ImgBB API Documentation",
+    "url": "https://api.imgbb.com/"
+  },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://api.imgbb.com/1/upload",
+    "serviceType": "Image Upload"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "ImgBB API Access",
+    "description": "Free image hosting API. An API key is required for programmatic uploads.",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Binary file upload via multipart/form-data",
+    "Base64-encoded image upload",
+    "Remote image URL upload",
+    "Automatic thumbnail generation",
+    "Medium-sized image variant",
+    "Configurable expiration (60s to 180 days)",
+    "Delete URL for image removal",
+    "JSON response with full image metadata",
+    "Supports POST and GET methods"
+  ],
+  "category": [
+    "Image Hosting",
+    "Image Upload",
+    "File Sharing",
+    "Media",
+    "Cloud Storage"
+  ],
+  "license": "https://imgbb.com/page/tos",
+  "privacyPolicy": "https://imgbb.com/page/privacy_policy",
+  "potentialAction": {
+    "@type": "Action",
+    "name": "uploadImage",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://api.imgbb.com/1/upload",
+      "httpMethod": "POST",
+      "contentType": "multipart/form-data"
+    },
+    "object": {
+      "@type": "ImageObject",
+      "description": "The image to upload (binary, base64, or URL, max 32 MB)"
+    },
+    "result": {
+      "@type": "ImageObject",
+      "description": "Uploaded image with direct URL, viewer URL, thumbnail, and delete URL"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "summary": "Upload a base64-encoded image",
+  "description": "Example of uploading a base64-encoded image to ImgBB. The image field should contain the raw base64 string (without the data URI prefix).",
+  "request": {
+    "method": "POST",
+    "url": "https://api.imgbb.com/1/upload",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": {
+      "key": "YOUR_API_KEY",
+      "image": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+      "name": "pixel",
+      "expiration": 3600
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": {
+        "id": "aB1cDeF",
+        "title": "pixel",
+        "url_viewer": "https://ibb.co/aB1cDeF",
+        "url": "https://i.ibb.co/aB1cDeF/pixel.png",
+        "display_url": "https://i.ibb.co/aB1cDeF/pixel.png",
+        "width": "1",
+        "height": "1",
+        "size": "68",
+        "time": "1617902000",
+        "expiration": "3600",
+        "image": {
+          "filename": "pixel.png",
+          "name": "pixel",
+          "mime": "image/png",
+          "extension": "png",
+          "url": "https://i.ibb.co/aB1cDeF/pixel.png"
+        },
+        "thumb": {
+          "filename": "pixel.png",
+          "name": "pixel",
+          "mime": "image/png",
+          "extension": "png",
+          "url": "https://i.ibb.co/aB1cDeF/pixel.png"
+        },
+        "medium": {
+          "filename": "pixel.png",
+          "name": "pixel",
+          "mime": "image/png",
+          "extension": "png",
+          "url": "https://i.ibb.co/aB1cDeF/pixel.png"
+        },
+        "delete_url": "https://ibb.co/delete/pqr456deletetoken"
+      },
+      "success": true,
+      "status": 200
+    }
+  }
+}

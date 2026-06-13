@@ -43,6 +43,18 @@ apis:
         url: https://api.imgbb.com/
       - type: Authentication
         url: https://api.imgbb.com/
+      - type: OpenAPI
+        url: openapi/imgbb-openapi.yml
+      - type: JSONSchema
+        url: json-schema/upload-request.json
+      - type: JSONSchema
+        url: json-schema/upload-response.json
+      - type: Example
+        url: examples/upload-image-post.json
+      - type: Example
+        url: examples/upload-image-url.json
+      - type: Example
+        url: examples/upload-image-base64.json
 
 common:
   - type: Website
@@ -61,6 +73,12 @@ common:
     url: rate-limits/imgbb-rate-limits.yml
   - type: FinOps
     url: finops/imgbb-finops.yml
+  - type: Vocabulary
+    url: vocabulary/imgbb-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/imgbb-jsonld.json
+  - type: Blogs
+    url: blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane

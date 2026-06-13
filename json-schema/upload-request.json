@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/imgbb/main/json-schema/upload-request.json",
+  "title": "ImgBB Upload Request",
+  "description": "Request body schema for uploading an image to ImgBB via the v1 API.",
+  "type": "object",
+  "required": ["key", "image"],
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "API key for authentication, obtained from https://api.imgbb.com/."
+    },
+    "image": {
+      "type": "string",
+      "description": "A binary file, base64-encoded image data, or a remote image URL. Maximum 32 MB."
+    },
+    "name": {
+      "type": "string",
+      "description": "Optional file name. Auto-detected for multipart binary uploads."
+    },
+    "expiration": {
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 15552000,
+      "description": "Auto-delete the image after this many seconds (60 to 15552000 / 180 days). Omit for permanent storage."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/imgbb/main/json-schema/upload-response.json",
+  "title": "ImgBB Upload Response",
+  "description": "JSON response schema returned by the ImgBB v1 upload API on success.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "Image metadata returned on successful upload.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique image identifier on ImgBB."
+        },
+        "title": {
+          "type": "string",
+          "description": "Image title (auto-generated or from the name parameter)."
+        },
+        "url_viewer": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the ImgBB viewer page for this image."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Direct URL to the full-size image."
+        },
+        "display_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Display-optimized URL suitable for embedding."
+        },
+        "width": {
+          "type": "string",
+          "description": "Image width in pixels (returned as string)."
+        },
+        "height": {
+          "type": "string",
+          "description": "Image height in pixels (returned as string)."
+        },
+        "size": {
+          "type": "string",
+          "description": "File size in bytes (returned as string)."
+        },
+        "time": {
+          "type": "string",
+          "description": "Unix timestamp of the upload (returned as string)."
+        },
+        "expiration": {
+          "type": "string",
+          "description": "Expiration in seconds from upload time; \"0\" means no expiration (permanent)."
+        },
+        "image": {
+          "$ref": "#/$defs/ImageVariant",
+          "description": "Metadata for the full-size image."
+        },
+        "thumb": {
+          "$ref": "#/$defs/ImageVariant",
+          "description": "Metadata for the thumbnail image."
+        },
+        "medium": {
+          "$ref": "#/$defs/ImageVariant",
+          "description": "Metadata for the medium-sized image variant."
+        },
+        "delete_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to permanently delete this image from ImgBB."
+        }
+      }
+    },
+    "success": {
+      "type": "boolean",
+      "description": "True if the upload was successful."
+    },
+    "status": {
+      "type": "integer",
+      "description": "HTTP status code mirrored in the response body."
+    }
+  },
+  "$defs": {
+    "ImageVariant": {
+      "type": "object",
+      "description": "Metadata for an image or image variant.",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "description": "File name including extension."
+        },
+        "name": {
+          "type": "string",
+          "description": "Base name without extension."
+        },
+        "mime": {
+          "type": "string",
+          "description": "MIME type (e.g. image/png, image/jpeg)."
+        },
+        "extension": {
+          "type": "string",
+          "description": "File extension (e.g. png, jpg)."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to this image variant."
+        }
+      }
+    }
+  }
+}

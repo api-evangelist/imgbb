@@ -1,0 +1,65 @@
+vocabulary:
+  - term: API Key
+    definition: >
+      A unique authentication credential required to use the ImgBB upload API.
+      Obtained from the ImgBB account settings at https://api.imgbb.com/. Passed
+      as the `key` query parameter or form field in every API request.
+
+  - term: image
+    definition: >
+      The content to upload. Can be a binary file (via multipart/form-data),
+      a base64-encoded image string, or a remote image URL. Maximum allowed
+      size is 32 MB.
+
+  - term: expiration
+    definition: >
+      An optional integer (seconds) specifying how long ImgBB should keep the
+      uploaded image before automatically deleting it. Valid range is 60 seconds
+      to 15,552,000 seconds (180 days). If omitted, the image is stored permanently.
+
+  - term: id
+    definition: >
+      A short alphanumeric string uniquely identifying an uploaded image on
+      ImgBB (e.g. "2ndCYJK"). Used in viewer URLs and delete URLs.
+
+  - term: url_viewer
+    definition: >
+      The URL of the ImgBB viewer page for an uploaded image
+      (e.g. https://ibb.co/<id>). Suitable for sharing with users who want a
+      browsable page around the image.
+
+  - term: url
+    definition: >
+      The direct URL to the full-resolution uploaded image file, suitable for
+      embedding in web pages or downloading.
+
+  - term: display_url
+    definition: >
+      A display-optimized URL for the image, often identical to `url` for
+      smaller images but may point to a scaled version for large uploads.
+
+  - term: thumb
+    definition: >
+      A small thumbnail variant of the uploaded image. Returned as an object
+      with `filename`, `name`, `mime`, `extension`, and `url` fields.
+
+  - term: medium
+    definition: >
+      A medium-sized variant of the uploaded image. Returned as an object
+      with `filename`, `name`, `mime`, `extension`, and `url` fields.
+
+  - term: delete_url
+    definition: >
+      A URL that, when visited, permanently deletes the uploaded image from
+      ImgBB. This URL contains a unique token and should be stored securely
+      if the ability to delete the image is needed later.
+
+  - term: success
+    definition: >
+      A boolean field in the API response indicating whether the upload
+      operation completed successfully (true) or not (false).
+
+  - term: status
+    definition: >
+      The HTTP status code mirrored as an integer inside the JSON response body
+      (e.g. 200 for success, 400 for bad request, 401 for unauthorized).

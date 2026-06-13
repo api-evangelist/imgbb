@@ -1,0 +1,58 @@
+{
+  "summary": "Upload a local image file via POST (multipart/form-data)",
+  "description": "Example of uploading a local PNG image to ImgBB using multipart form data. This is the recommended method for binary file uploads.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.imgbb.com/1/upload",
+    "headers": {
+      "Content-Type": "multipart/form-data"
+    },
+    "body": {
+      "key": "YOUR_API_KEY",
+      "image": "<binary file data>",
+      "name": "my-photo",
+      "expiration": 86400
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": {
+        "id": "2ndCYJK",
+        "title": "my-photo",
+        "url_viewer": "https://ibb.co/2ndCYJK",
+        "url": "https://i.ibb.co/qph2cwV/my-photo.png",
+        "display_url": "https://i.ibb.co/qph2cwV/my-photo.png",
+        "width": "800",
+        "height": "600",
+        "size": "52718",
+        "time": "1617896205",
+        "expiration": "86400",
+        "image": {
+          "filename": "my-photo.png",
+          "name": "my-photo",
+          "mime": "image/png",
+          "extension": "png",
+          "url": "https://i.ibb.co/qph2cwV/my-photo.png"
+        },
+        "thumb": {
+          "filename": "my-photo.png",
+          "name": "my-photo",
+          "mime": "image/png",
+          "extension": "png",
+          "url": "https://i.ibb.co/2ndCYJK/my-photo.png"
+        },
+        "medium": {
+          "filename": "my-photo.png",
+          "name": "my-photo",
+          "mime": "image/png",
+          "extension": "png",
+          "url": "https://i.ibb.co/qph2cwV/my-photo.png"
+        },
+        "delete_url": "https://ibb.co/delete/abc123deletetoken"
+      },
+      "success": true,
+      "status": 200
+    }
+  }
+}

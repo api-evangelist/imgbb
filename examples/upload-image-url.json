@@ -1,0 +1,57 @@
+{
+  "summary": "Upload an image from a remote URL",
+  "description": "Example of uploading an image to ImgBB by providing a remote image URL. Useful for re-hosting publicly accessible images.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.imgbb.com/1/upload",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": {
+      "key": "YOUR_API_KEY",
+      "image": "https://example.com/photo.jpg",
+      "name": "example-photo"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": {
+        "id": "xZ3kpQR",
+        "title": "example-photo",
+        "url_viewer": "https://ibb.co/xZ3kpQR",
+        "url": "https://i.ibb.co/xZ3kpQR/example-photo.jpg",
+        "display_url": "https://i.ibb.co/xZ3kpQR/example-photo.jpg",
+        "width": "1280",
+        "height": "720",
+        "size": "142350",
+        "time": "1617900000",
+        "expiration": "0",
+        "image": {
+          "filename": "example-photo.jpg",
+          "name": "example-photo",
+          "mime": "image/jpeg",
+          "extension": "jpg",
+          "url": "https://i.ibb.co/xZ3kpQR/example-photo.jpg"
+        },
+        "thumb": {
+          "filename": "example-photo.jpg",
+          "name": "example-photo",
+          "mime": "image/jpeg",
+          "extension": "jpg",
+          "url": "https://i.ibb.co/xZ3kpQR/example-photo.jpg"
+        },
+        "medium": {
+          "filename": "example-photo.jpg",
+          "name": "example-photo",
+          "mime": "image/jpeg",
+          "extension": "jpg",
+          "url": "https://i.ibb.co/xZ3kpQR/example-photo.jpg"
+        },
+        "delete_url": "https://ibb.co/delete/xyz789deletetoken"
+      },
+      "success": true,
+      "status": 200
+    }
+  }
+}
