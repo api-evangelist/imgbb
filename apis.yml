@@ -8,7 +8,7 @@ description: >
   registration is required to use the basic hosting service, but an API key is required
   for programmatic uploads via the v1 REST API.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/imgbb/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
