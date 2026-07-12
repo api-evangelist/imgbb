@@ -57,6 +57,10 @@ apis:
         url: examples/upload-image-base64.json
 
 common:
+  - type: DomainSecurity
+    url: security/imgbb-domain-security.yml
+  - type: Authentication
+    url: authentication/imgbb-authentication.yml
   - type: Website
     url: https://imgbb.com/
   - type: Documentation

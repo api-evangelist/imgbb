@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/imgbb-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: ApiKeyQuery
+  type: apiKey
+  in: query
+  parameter: key
+  description: API key obtained from your ImgBB account settings at https://api.imgbb.com/.
+    Pass as a query parameter named `key`.
+  sources:
+  - openapi/imgbb-openapi.yml
