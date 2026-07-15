@@ -57,6 +57,8 @@ apis:
         url: examples/upload-image-base64.json
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/imgbb-agentic-access.yml
   - type: DomainSecurity
     url: security/imgbb-domain-security.yml
   - type: Authentication
