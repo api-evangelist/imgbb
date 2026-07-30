@@ -8,7 +8,20 @@ description: >
   registration is required to use the basic hosting service, but an API key is required
   for programmatic uploads via the v1 REST API.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: open
+  trial: false
+  try_now: true
+  public: true
+  label: Freemium · Open access
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/imgbb.png
 url: https://raw.githubusercontent.com/api-evangelist/imgbb/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -22,40 +35,30 @@ tags:
   - REST API
 
 apis:
-
-  - aid: imgbb:image-upload-api
-    name: ImgBB Image Upload API
-    description: >
-      REST API (v1) for uploading images to ImgBB. Accepts binary files, base64-encoded
-      image data, or image URLs via POST or GET to https://api.imgbb.com/1/upload.
-      Returns JSON with direct image URL, viewer URL, thumbnail URL, delete URL, image
-      dimensions, file size, MIME type, and optional expiration timestamp. Authentication
-      is via an API key passed as the key query parameter or form field.
-    humanURL: https://api.imgbb.com/
-    baseURL: https://api.imgbb.com/1
-    tags:
-      - Image Upload
-      - Image Hosting
-      - File Sharing
-      - Media
-    properties:
-      - type: Documentation
-        url: https://api.imgbb.com/
-      - type: Authentication
-        url: https://api.imgbb.com/
-      - type: OpenAPI
-        url: openapi/imgbb-openapi.yml
-      - type: JSONSchema
-        url: json-schema/upload-request.json
-      - type: JSONSchema
-        url: json-schema/upload-response.json
-      - type: Examples
-        url: examples/upload-image-post.json
-      - type: Examples
-        url: examples/upload-image-url.json
-      - type: Examples
-        url: examples/upload-image-base64.json
-
+- aid: imgbb:imgbb-images-api
+  name: ImgBB Images API
+  description: The Images API from ImgBB — 1 operation(s) for images.
+  humanURL: https://api.imgbb.com/
+  baseURL: https://api.imgbb.com/1
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/imgbb-images-api-openapi.yml
+  - type: Documentation
+    url: https://api.imgbb.com/
+  - type: Authentication
+    url: https://api.imgbb.com/
+  - type: JSONSchema
+    url: json-schema/upload-request.json
+  - type: JSONSchema
+    url: json-schema/upload-response.json
+  - type: Examples
+    url: examples/upload-image-post.json
+  - type: Examples
+    url: examples/upload-image-url.json
+  - type: Examples
+    url: examples/upload-image-base64.json
 common:
   - type: AgenticAccess
     url: agentic-access/imgbb-agentic-access.yml
