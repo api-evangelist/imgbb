@@ -1,0 +1,14 @@
+{
+  "provider": "imgbb",
+  "sources": [
+    "imgbb-images-api-openapi.yml"
+  ],
+  "outputs": [
+    "imgbb-images-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

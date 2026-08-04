@@ -1,0 +1,316 @@
+openapi: 3.1.0
+info:
+  title: ImgBB Image Upload API
+  description: >
+    REST API (v1) for uploading images to ImgBB. Accepts binary files,
+    base64-encoded image data, or image URLs via POST or GET.
+    Returns JSON with direct image URL, viewer URL, thumbnail URL, delete URL,
+    image dimensions, file size, MIME type, and optional expiration timestamp.
+    Authentication is via an API key passed as the key query parameter or form field.
+  version: '1'
+  contact:
+    url: https://api.imgbb.com/
+  termsOfService: https://imgbb.com/page/tos
+  license:
+    name: ImgBB Terms of Service
+    url: https://imgbb.com/page/tos
+externalDocs:
+  description: ImgBB API Documentation
+  url: https://api.imgbb.com/
+servers:
+  - url: https://api.imgbb.com/1
+    description: ImgBB API v1
+
+security:
+  - ApiKeyQuery: []
+
+paths:
+  /upload:
+    post:
+      operationId: uploadImage
+      summary: Upload an image
+      description: >
+        Upload an image to ImgBB using multipart form data (recommended for binary
+        files), base64-encoded data, or a remote image URL. Returns JSON metadata
+        including direct link, viewer page, thumbnail, and delete URL.
+        POST is preferred over GET since GET requests are limited by maximum URL length.
+      tags:
+        - Images
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UploadRequest'
+      parameters:
+        - name: key
+          in: query
+          required: false
+          description: API key for authentication. Can also be provided in the request body.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Image uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResponse'
+              example:
+                data:
+                  id: "2ndCYJK"
+                  title: "sample"
+                  url_viewer: "https://ibb.co/2ndCYJK"
+                  url: "https://i.ibb.co/qph2cwV/sample.png"
+                  display_url: "https://i.ibb.co/qph2cwV/sample.png"
+                  width: "800"
+                  height: "600"
+                  size: "52718"
+                  time: "1617896205"
+                  expiration: "0"
+                  image:
+                    filename: "sample.png"
+                    name: "sample"
+                    mime: "image/png"
+                    extension: "png"
+                    url: "https://i.ibb.co/qph2cwV/sample.png"
+                  thumb:
+                    filename: "sample.png"
+                    name: "sample"
+                    mime: "image/png"
+                    extension: "png"
+                    url: "https://i.ibb.co/2ndCYJK/sample.png"
+                  medium:
+                    filename: "sample.png"
+                    name: "sample"
+                    mime: "image/png"
+                    extension: "png"
+                    url: "https://i.ibb.co/qph2cwV/sample.png"
+                  delete_url: "https://ibb.co/delete/abc123token"
+                success: true
+                status: 200
+        '400':
+          description: Bad request — missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many requests — rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: uploadImageGet
+      summary: Upload an image via GET
+      description: >
+        Upload an image to ImgBB using a GET request. Only suitable for remote image
+        URLs or small base64-encoded images. For local files use POST instead since
+        GET requests are limited by maximum URL length.
+      tags:
+        - Images
+      parameters:
+        - name: key
+          in: query
+          required: true
+          description: API key for authentication.
+          schema:
+            type: string
+        - name: image
+          in: query
+          required: true
+          description: >
+            A binary file, base64 data, or URL. Max 32 MB.
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: The file name (optional, auto-detected for binary uploads).
+          schema:
+            type: string
+        - name: expiration
+          in: query
+          required: false
+          description: >
+            Auto-delete the image after this many seconds. Must be between 60
+            and 15552000 (180 days). Omit for permanent storage.
+          schema:
+            type: integer
+            minimum: 60
+            maximum: 15552000
+      responses:
+        '200':
+          description: Image uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResponse'
+        '400':
+          description: Bad request — missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+      description: >
+        API key obtained from your ImgBB account settings at https://api.imgbb.com/.
+        Pass as a query parameter named `key`.
+
+  schemas:
+    UploadRequest:
+      type: object
+      required:
+        - key
+        - image
+      properties:
+        key:
+          type: string
+          description: API key for authentication.
+        image:
+          type: string
+          description: >
+            A binary file, base64-encoded image data, or a remote image URL.
+            Maximum 32 MB.
+        name:
+          type: string
+          description: Optional file name. Auto-detected for binary multipart uploads.
+        expiration:
+          type: integer
+          minimum: 60
+          maximum: 15552000
+          description: >
+            Auto-delete the image after this many seconds (60 to 15552000).
+            Omit for permanent storage.
+
+    ImageVariant:
+      type: object
+      properties:
+        filename:
+          type: string
+          description: File name of this image variant.
+        name:
+          type: string
+          description: Base name without extension.
+        mime:
+          type: string
+          description: MIME type (e.g. image/png, image/jpeg).
+        extension:
+          type: string
+          description: File extension (e.g. png, jpg).
+        url:
+          type: string
+          format: uri
+          description: URL of this image variant.
+
+    UploadData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique image identifier on ImgBB.
+        title:
+          type: string
+          description: Image title (auto-generated or provided name).
+        url_viewer:
+          type: string
+          format: uri
+          description: URL of the ImgBB viewer page for this image.
+        url:
+          type: string
+          format: uri
+          description: Direct URL to the full-size image.
+        display_url:
+          type: string
+          format: uri
+          description: Display-optimized URL for embedding.
+        width:
+          type: string
+          description: Image width in pixels.
+        height:
+          type: string
+          description: Image height in pixels.
+        size:
+          type: string
+          description: File size in bytes.
+        time:
+          type: string
+          description: Unix timestamp of the upload.
+        expiration:
+          type: string
+          description: Expiration in seconds from upload time; "0" means permanent.
+        image:
+          $ref: '#/components/schemas/ImageVariant'
+          description: Full-size image metadata.
+        thumb:
+          $ref: '#/components/schemas/ImageVariant'
+          description: Thumbnail image metadata.
+        medium:
+          $ref: '#/components/schemas/ImageVariant'
+          description: Medium-sized image variant metadata.
+        delete_url:
+          type: string
+          format: uri
+          description: URL to permanently delete this image.
+
+    UploadResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UploadData'
+        success:
+          type: boolean
+          description: True if the upload succeeded.
+        status:
+          type: integer
+          description: HTTP status code mirrored in the response body.
+
+    ErrorResponse:
+      type: object
+      properties:
+        status_code:
+          type: integer
+          description: HTTP status code.
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Human-readable error message.
+            code:
+              type: integer
+              description: Internal error code.
+            context:
+              type: string
+              description: Additional error context.
+        status_txt:
+          type: string
+          description: Short status text (e.g. "Bad Request").
