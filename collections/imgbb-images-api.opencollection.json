@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ImgBB Image Upload Images API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload an image via GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.imgbb.com/1/upload",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key for authentication."
+              },
+              {
+                "name": "image",
+                "value": "",
+                "type": "query",
+                "description": "A binary file, base64 data, or URL. Max 32 MB.\n"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The file name (optional, auto-detected for binary uploads)."
+              },
+              {
+                "name": "expiration",
+                "value": "",
+                "type": "query",
+                "description": "Auto-delete the image after this many seconds. Must be between 60 and 15552000 (180 days). Omit for permanent storage.\n"
+              }
+            ]
+          },
+          "docs": "Upload an image to ImgBB using a GET request. Only suitable for remote image URLs or small base64-encoded images. For local files use POST instead since GET requests are limited by maximum URL length.\n"
+        },
+        {
+          "info": {
+            "name": "Upload an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.imgbb.com/1/upload",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key for authentication. Can also be provided in the request body."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Upload an image to ImgBB using multipart form data (recommended for binary files), base64-encoded data, or a remote image URL. Returns JSON metadata including direct link, viewer page, thumbnail, and delete URL. POST is preferred over GET since GET requests are limited by maximum URL length.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

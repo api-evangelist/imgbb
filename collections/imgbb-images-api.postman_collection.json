@@ -1,0 +1,772 @@
+{
+  "item": [
+    {
+      "id": "d731ec4e-9acc-44d8-9ff6-f726057a0c94",
+      "name": "Images",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92e158a0-70e2-481b-b593-5dbf80dd0bdf",
+          "name": "Upload an image",
+          "request": {
+            "name": "Upload an image",
+            "description": {
+              "content": "Upload an image to ImgBB using multipart form data (recommended for binary files), base64-encoded data, or a remote image URL. Returns JSON metadata including direct link, viewer page, thumbnail, and delete URL. POST is preferred over GET since GET requests are limited by maximum URL length.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "API key for authentication. Can also be provided in the request body."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key for authentication."
+                },
+                {
+                  "disabled": false,
+                  "key": "image",
+                  "value": "<string>",
+                  "description": "(Required) A binary file, base64-encoded image data, or a remote image URL. Maximum 32 MB.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Optional file name. Auto-detected for binary multipart uploads."
+                },
+                {
+                  "disabled": false,
+                  "key": "expiration",
+                  "value": "<integer>",
+                  "description": "Auto-delete the image after this many seconds (60 to 15552000). Omit for permanent storage.\n"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a04429e6-4419-42dd-9914-69bc9977078d",
+              "name": "Image uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API key for authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A binary file, base64-encoded image data, or a remote image URL. Maximum 32 MB.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional file name. Auto-detected for binary multipart uploads.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Auto-delete the image after this many seconds (60 to 15552000). Omit for permanent storage.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "expiration",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"2ndCYJK\",\n    \"title\": \"sample\",\n    \"url_viewer\": \"https://ibb.co/2ndCYJK\",\n    \"url\": \"https://i.ibb.co/qph2cwV/sample.png\",\n    \"display_url\": \"https://i.ibb.co/qph2cwV/sample.png\",\n    \"width\": \"800\",\n    \"height\": \"600\",\n    \"size\": \"52718\",\n    \"time\": \"1617896205\",\n    \"expiration\": \"0\",\n    \"image\": {\n      \"filename\": \"sample.png\",\n      \"name\": \"sample\",\n      \"mime\": \"image/png\",\n      \"extension\": \"png\",\n      \"url\": \"https://i.ibb.co/qph2cwV/sample.png\"\n    },\n    \"thumb\": {\n      \"filename\": \"sample.png\",\n      \"name\": \"sample\",\n      \"mime\": \"image/png\",\n      \"extension\": \"png\",\n      \"url\": \"https://i.ibb.co/2ndCYJK/sample.png\"\n    },\n    \"medium\": {\n      \"filename\": \"sample.png\",\n      \"name\": \"sample\",\n      \"mime\": \"image/png\",\n      \"extension\": \"png\",\n      \"url\": \"https://i.ibb.co/qph2cwV/sample.png\"\n    },\n    \"delete_url\": \"https://ibb.co/delete/abc123token\"\n  },\n  \"success\": true,\n  \"status\": 200\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d6e8d51-8474-4755-9b17-4e1fad1d382c",
+              "name": "Bad request — missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API key for authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A binary file, base64-encoded image data, or a remote image URL. Maximum 32 MB.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional file name. Auto-detected for binary multipart uploads.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Auto-delete the image after this many seconds (60 to 15552000). Omit for permanent storage.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "expiration",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": 9969,\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": 6353,\n    \"context\": \"string\"\n  },\n  \"status_txt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c8a6511-55ee-4dc6-82eb-4669c84f5987",
+              "name": "Unauthorized — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API key for authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A binary file, base64-encoded image data, or a remote image URL. Maximum 32 MB.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional file name. Auto-detected for binary multipart uploads.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Auto-delete the image after this many seconds (60 to 15552000). Omit for permanent storage.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "expiration",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": 9969,\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": 6353,\n    \"context\": \"string\"\n  },\n  \"status_txt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1df031bf-c992-4ead-8a86-61310f61c375",
+              "name": "Too many requests — rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API key for authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A binary file, base64-encoded image data, or a remote image URL. Maximum 32 MB.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional file name. Auto-detected for binary multipart uploads.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Auto-delete the image after this many seconds (60 to 15552000). Omit for permanent storage.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "expiration",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": 9969,\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": 6353,\n    \"context\": \"string\"\n  },\n  \"status_txt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adb3de53-f896-45ac-ada8-742b80004af3",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API key for authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A binary file, base64-encoded image data, or a remote image URL. Maximum 32 MB.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional file name. Auto-detected for binary multipart uploads.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Auto-delete the image after this many seconds (60 to 15552000). Omit for permanent storage.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "expiration",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": 9969,\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": 6353,\n    \"context\": \"string\"\n  },\n  \"status_txt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "862d0023-2ea6-482d-b2ce-da67ce3bbf56",
+          "name": "Upload an image via GET",
+          "request": {
+            "name": "Upload an image via GET",
+            "description": {
+              "content": "Upload an image to ImgBB using a GET request. Only suitable for remote image URLs or small base64-encoded images. For local files use POST instead since GET requests are limited by maximum URL length.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key for authentication."
+                },
+                {
+                  "disabled": false,
+                  "key": "image",
+                  "value": "<string>",
+                  "description": "(Required) A binary file, base64 data, or URL. Max 32 MB.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The file name (optional, auto-detected for binary uploads)."
+                },
+                {
+                  "disabled": false,
+                  "key": "expiration",
+                  "value": "<integer>",
+                  "description": "Auto-delete the image after this many seconds. Must be between 60 and 15552000 (180 days). Omit for permanent storage.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe566157-24be-414e-83e7-88d2a7072797",
+              "name": "Image uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expiration",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"title\": \"string\",\n    \"url_viewer\": \"http://DXXktTapCUkCVmSRwkGjVzhhL.ryZvO0dU8vJsc5jssjaPcBxQujS,kd\",\n    \"url\": \"http://JNTGfJmTUdlTHGsaDqI.mrmrjcYJVsUkko,qFOkt,l0EcF+kjNUQqMJRuFbhIwJ-THawhYNXCHSGbm\",\n    \"display_url\": \"http://t.kcrWXz9uvmlhecvKZkNfdTC5F\",\n    \"width\": \"string\",\n    \"height\": \"string\",\n    \"size\": \"string\",\n    \"time\": \"string\",\n    \"expiration\": \"string\",\n    \"image\": {\n      \"filename\": \"string\",\n      \"name\": \"string\",\n      \"mime\": \"string\",\n      \"extension\": \"string\",\n      \"url\": \"https://MYXLcmNAfEYqtqOvvSZdSNxExjGpWqF.offMOjxMRzxwB-q-9kmxYHn.fbJ44qCieBLqnG,g1wgS.XabTBxLs2gMBjEZq7xMQj\"\n    },\n    \"thumb\": {\n      \"filename\": \"string\",\n      \"name\": \"string\",\n      \"mime\": \"string\",\n      \"extension\": \"string\",\n      \"url\": \"https://OiWAhVqbMnFeRwLsqIVMBnqhW.ehlxvJalnyaZnTCara2b6i1v9l\"\n    },\n    \"medium\": {\n      \"filename\": \"string\",\n      \"name\": \"string\",\n      \"mime\": \"string\",\n      \"extension\": \"string\",\n      \"url\": \"http://vdUQ.ofuutGOhgjHtPHAJqxAkbKxNm3JP9vt4yaHW0QQAsv+1tuahnW9rtcJwfSq4zum\"\n    },\n    \"delete_url\": \"http://dryDyUonSKMkVvhVrxXgUidjIEQBj.idYkY\"\n  },\n  \"success\": true,\n  \"status\": 3683\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "342d42cb-9f11-44d6-ad1f-baa7981514d6",
+              "name": "Bad request — missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expiration",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": 9969,\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": 6353,\n    \"context\": \"string\"\n  },\n  \"status_txt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "076f25bb-d0a2-4681-ae52-1e252f1b6494",
+              "name": "Unauthorized — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expiration",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": 9969,\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": 6353,\n    \"context\": \"string\"\n  },\n  \"status_txt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.imgbb.com/1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b72a09fb-f426-4017-ba26-e11f831306f7",
+    "name": "ImgBB Image Upload Images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API (v1) for uploading images to ImgBB. Accepts binary files, base64-encoded image data, or image URLs via POST or GET. Returns JSON with direct image URL, viewer URL, thumbnail URL, delete URL, image dimensions, file size, MIME type, and optional expiration timestamp. Authentication is via an API key passed as the key query parameter or form field.\n",
+      "type": "text/plain"
+    }
+  }
+}
