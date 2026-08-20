@@ -41,6 +41,8 @@ apis:
   humanURL: https://api.imgbb.com/
   baseURL: https://api.imgbb.com/1
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
