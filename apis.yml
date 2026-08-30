@@ -100,8 +100,6 @@ common:
     url: vocabulary/imgbb-vocabulary.yml
   - type: JSONLD
     url: json-ld/imgbb-jsonld.json
-  - type: Blog
-    url: blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane
