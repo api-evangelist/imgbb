@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ImgBB Image Upload Images API
-  description: 'REST API (v1) for uploading images to ImgBB. Accepts binary files, base64-encoded image data, or image URLs via POST or GET. Returns JSON with direct image URL, viewer URL, thumbnail URL, delete URL, image dimensions, file size, MIME type, and optional expiration timestamp. Authentication is via an API key passed as the key query parameter or form field.
-
-    '
+  description: REST API (v1) for uploading images to ImgBB. Accepts binary files, base64-encoded image data, or image URLs via POST or GET. Returns JSON with direct image URL, viewer URL, thumbnail URL, delete URL, image dimensions, file size, MIME type, and optional expiration timestamp. Authentication is via an API key passed as the key query parameter or form field.
   version: '1'
   contact:
     url: https://api.imgbb.com/
@@ -23,9 +21,7 @@ paths:
     post:
       operationId: uploadImage
       summary: Upload an image
-      description: 'Upload an image to ImgBB using multipart form data (recommended for binary files), base64-encoded data, or a remote image URL. Returns JSON metadata including direct link, viewer page, thumbnail, and delete URL. POST is preferred over GET since GET requests are limited by maximum URL length.
-
-        '
+      description: Upload an image to ImgBB using multipart form data (recommended for binary files), base64-encoded data, or a remote image URL. Returns JSON metadata including direct link, viewer page, thumbnail, and delete URL. POST is preferred over GET since GET requests are limited by maximum URL length.
       tags:
       - Images
       requestBody:
@@ -111,9 +107,7 @@ paths:
     get:
       operationId: uploadImageGet
       summary: Upload an image via GET
-      description: 'Upload an image to ImgBB using a GET request. Only suitable for remote image URLs or small base64-encoded images. For local files use POST instead since GET requests are limited by maximum URL length.
-
-        '
+      description: Upload an image to ImgBB using a GET request. Only suitable for remote image URLs or small base64-encoded images. For local files use POST instead since GET requests are limited by maximum URL length.
       tags:
       - Images
       parameters:
@@ -168,6 +162,55 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    UploadData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique image identifier on ImgBB.
+        title:
+          type: string
+          description: Image title (auto-generated or provided name).
+        url_viewer:
+          type: string
+          format: uri
+          description: URL of the ImgBB viewer page for this image.
+        url:
+          type: string
+          format: uri
+          description: Direct URL to the full-size image.
+        display_url:
+          type: string
+          format: uri
+          description: Display-optimized URL for embedding.
+        width:
+          type: string
+          description: Image width in pixels.
+        height:
+          type: string
+          description: Image height in pixels.
+        size:
+          type: string
+          description: File size in bytes.
+        time:
+          type: string
+          description: Unix timestamp of the upload.
+        expiration:
+          type: string
+          description: Expiration in seconds from upload time; "0" means permanent.
+        image:
+          $ref: '#/components/schemas/ImageVariant'
+          description: Full-size image metadata.
+        thumb:
+          $ref: '#/components/schemas/ImageVariant'
+          description: Thumbnail image metadata.
+        medium:
+          $ref: '#/components/schemas/ImageVariant'
+          description: Medium-sized image variant metadata.
+        delete_url:
+          type: string
+          format: uri
+          description: URL to permanently delete this image.
     UploadResponse:
       type: object
       properties:
@@ -243,55 +286,6 @@ components:
           type: string
           format: uri
           description: URL of this image variant.
-    UploadData:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique image identifier on ImgBB.
-        title:
-          type: string
-          description: Image title (auto-generated or provided name).
-        url_viewer:
-          type: string
-          format: uri
-          description: URL of the ImgBB viewer page for this image.
-        url:
-          type: string
-          format: uri
-          description: Direct URL to the full-size image.
-        display_url:
-          type: string
-          format: uri
-          description: Display-optimized URL for embedding.
-        width:
-          type: string
-          description: Image width in pixels.
-        height:
-          type: string
-          description: Image height in pixels.
-        size:
-          type: string
-          description: File size in bytes.
-        time:
-          type: string
-          description: Unix timestamp of the upload.
-        expiration:
-          type: string
-          description: Expiration in seconds from upload time; "0" means permanent.
-        image:
-          $ref: '#/components/schemas/ImageVariant'
-          description: Full-size image metadata.
-        thumb:
-          $ref: '#/components/schemas/ImageVariant'
-          description: Thumbnail image metadata.
-        medium:
-          $ref: '#/components/schemas/ImageVariant'
-          description: Medium-sized image variant metadata.
-        delete_url:
-          type: string
-          format: uri
-          description: URL to permanently delete this image.
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
