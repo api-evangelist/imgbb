@@ -162,6 +162,36 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    UploadResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UploadData'
+        success:
+          type: boolean
+          description: True if the upload succeeded.
+        status:
+          type: integer
+          description: HTTP status code mirrored in the response body.
+    ImageVariant:
+      type: object
+      properties:
+        filename:
+          type: string
+          description: File name of this image variant.
+        name:
+          type: string
+          description: Base name without extension.
+        mime:
+          type: string
+          description: MIME type (e.g. image/png, image/jpeg).
+        extension:
+          type: string
+          description: File extension (e.g. png, jpg).
+        url:
+          type: string
+          format: uri
+          description: URL of this image variant.
     UploadData:
       type: object
       properties:
@@ -211,17 +241,6 @@ components:
           type: string
           format: uri
           description: URL to permanently delete this image.
-    UploadResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/UploadData'
-        success:
-          type: boolean
-          description: True if the upload succeeded.
-        status:
-          type: integer
-          description: HTTP status code mirrored in the response body.
     UploadRequest:
       type: object
       required:
@@ -267,25 +286,6 @@ components:
         status_txt:
           type: string
           description: Short status text (e.g. "Bad Request").
-    ImageVariant:
-      type: object
-      properties:
-        filename:
-          type: string
-          description: File name of this image variant.
-        name:
-          type: string
-          description: Base name without extension.
-        mime:
-          type: string
-          description: MIME type (e.g. image/png, image/jpeg).
-        extension:
-          type: string
-          description: File extension (e.g. png, jpg).
-        url:
-          type: string
-          format: uri
-          description: URL of this image variant.
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
