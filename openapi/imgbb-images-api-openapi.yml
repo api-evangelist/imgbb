@@ -162,27 +162,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        status_code:
-          type: integer
-          description: HTTP status code.
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Human-readable error message.
-            code:
-              type: integer
-              description: Internal error code.
-            context:
-              type: string
-              description: Additional error context.
-        status_txt:
-          type: string
-          description: Short status text (e.g. "Bad Request").
     UploadResponse:
       type: object
       properties:
@@ -194,25 +173,6 @@ components:
         status:
           type: integer
           description: HTTP status code mirrored in the response body.
-    ImageVariant:
-      type: object
-      properties:
-        filename:
-          type: string
-          description: File name of this image variant.
-        name:
-          type: string
-          description: Base name without extension.
-        mime:
-          type: string
-          description: MIME type (e.g. image/png, image/jpeg).
-        extension:
-          type: string
-          description: File extension (e.g. png, jpg).
-        url:
-          type: string
-          format: uri
-          description: URL of this image variant.
     UploadRequest:
       type: object
       required:
@@ -286,6 +246,46 @@ components:
           type: string
           format: uri
           description: URL to permanently delete this image.
+    ImageVariant:
+      type: object
+      properties:
+        filename:
+          type: string
+          description: File name of this image variant.
+        name:
+          type: string
+          description: Base name without extension.
+        mime:
+          type: string
+          description: MIME type (e.g. image/png, image/jpeg).
+        extension:
+          type: string
+          description: File extension (e.g. png, jpg).
+        url:
+          type: string
+          format: uri
+          description: URL of this image variant.
+    ErrorResponse:
+      type: object
+      properties:
+        status_code:
+          type: integer
+          description: HTTP status code.
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Human-readable error message.
+            code:
+              type: integer
+              description: Internal error code.
+            context:
+              type: string
+              description: Additional error context.
+        status_txt:
+          type: string
+          description: Short status text (e.g. "Bad Request").
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
