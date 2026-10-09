@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-13 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-06-13'
 specification: API Commons Plans
 specificationVersion: '0.1'
 provider: ImgBB
@@ -119,3 +124,33 @@ notes: >
   are not publicly documented. The free tier allows API usage with a key obtained from
   https://api.imgbb.com after creating a free account. Pro plans are primarily
   differentiated by file size, ad removal, and image replacement capability.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Free
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro Monthly
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro Annual
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro 3-Year
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
