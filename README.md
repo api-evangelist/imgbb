@@ -1,4 +1,4 @@
-# ImgBB (imgbb)
+# ImgBB
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,43 +64,145 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Free image hosting and sharing platform with a REST API for uploading images, retrieving shareable links, managing auto-deletion, and accessing image metadata.
+ImgBB is a free image hosting and sharing platform with a REST API for uploading images, retrieving shareable links, managing expiration, and accessing image metadata. Supports binary file upload, base64-encoded data, and image URLs up to 32 MB. The API returns direct image links, viewer page URLs, thumbnail URLs, and delete URLs in JSON. No registration is required to use the basic hosting service, but an API key is required for programmatic uploads via the v1 REST API.
 
-**APIs.yml:** [apis.yml](apis.yml)
+**Areas:** Image Hosting · Image Upload · File Sharing · Cloud Storage · Media · REST API
 
-## APIs
+## ImgBB on APIs.io
 
-- **ImgBB Image Upload API** — [Documentation](https://api.imgbb.com/)
-  - Base URL: `https://api.imgbb.com/1`
-  - Upload endpoint: `POST /upload`
-  - Auth: API key via `key` query parameter or form field
-  - Max file size: 32 MB (free) / 64 MB (Pro)
-  - Expiration range: 60–15,552,000 seconds
+Everything profiled for ImgBB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/imgbb/](https://apis.io/providers/imgbb/)** — or go straight to one of the APIs or properties below.
 
-## Plans & Pricing
+### APIs (1)
 
-| Plan | Cost | File Limit | Storage | Ads |
-|------|------|-----------|---------|-----|
-| Free | $0 | 32 MB | Unlimited | Yes |
-| Pro Monthly | $12.99/mo | 64 MB | Unlimited | No |
-| Pro Annual | $7.99/mo ($95.88/yr) | 64 MB | Unlimited | No |
-| Pro 3-Year | $3.99/mo ($143.64 total) | 64 MB | Unlimited | No |
+- [ImgBB Images API](https://apis.io/apis/imgbb/imgbb-images-api/) — The Images API from ImgBB — 1 operation(s) for images.
 
-## Supporting Files
+### Published properties
 
-- [plans/imgbb-plans-pricing.yml](plans/imgbb-plans-pricing.yml)
-- [rate-limits/imgbb-rate-limits.yml](rate-limits/imgbb-rate-limits.yml)
-- [finops/imgbb-finops.yml](finops/imgbb-finops.yml)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Tags
+#### Agentic access (1)
 
-Image Hosting, Image Upload, File Sharing, Cloud Storage, Media, REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Imgbb Agentic Access](https://apis.io/agentic-access/imgbb/imgbb-agentic-access/)
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+#### JSON Schema (2)
 
-## Maintainers
+The data models the API reads and writes.
 
-- **Kin Lane** — kin@apievangelist.com
+- [ImgBB Upload Request](https://apis.io/schemas/imgbb/upload-request/)
+- [ImgBB Upload Response](https://apis.io/schemas/imgbb/upload-response/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Imgbb Vocabulary](https://apis.io/vocabularies/imgbb/imgbb-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Upload Image Base64](https://apis.io/examples/imgbb/upload-image-base64/)
+- [Upload Image Post](https://apis.io/examples/imgbb/upload-image-post/)
+- [Upload Image Url](https://apis.io/examples/imgbb/upload-image-url/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [ImgBB Image Upload Images API](https://apis.io/collections/imgbb/open-imgbb-images-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [ImgBB — jsonschema rules](https://apis.io/rules/imgbb/imgbb-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Imgbb Authentication](https://apis.io/security/imgbb/imgbb-authentication/)
+- [Imgbb Domain Security](https://apis.io/security/imgbb/imgbb-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Imgbb Plans Pricing](https://apis.io/plans/imgbb/imgbb-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Imgbb Rate Limits](https://apis.io/rate-limits/imgbb/imgbb-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Imgbb Finops](https://apis.io/finops/imgbb/imgbb-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://imgbb.com/)
+- [Documentation](https://api.imgbb.com/)
+- [Pricing](https://imgbb.com/)
+- [Terms of service](https://imgbb.com/page/tos)
+- [Privacy policy](https://imgbb.com/page/privacy_policy)
+
+## API Evangelist rating
+
+**Kin Score 32.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 61.5 |
+| Contract governance | 23.5 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 10.7 |
+| Access clarity | 23.7 |
+
+**Agent readiness 28.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/imgbb/](https://apis.io/providers/imgbb/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ImgBB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/imgbb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
